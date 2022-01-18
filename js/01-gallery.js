@@ -1,6 +1,5 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-import * as basicLightbox from "basiclightbox";
 
 const generalBoxEl = document.querySelector(".gallery");
 
@@ -26,21 +25,25 @@ const cardsMarkup = createImgCardsMarkup(galleryItems);
 
 generalBoxEl.insertAdjacentHTML("beforeend", cardsMarkup);
 
-const imgEl = document.querySelector(".gallery__link");
+const imgEl = document.querySelector(".gallery__image");
 
 generalBoxEl.addEventListener("click", clickOnCard);
 
 function clickOnCard(e) {
   e.preventDefault();
-  console.log(e.turget);
-  console.log(e.currentTurget);
-  e.turget.scr = e.turget.dataset.source;
-  if (e.turget !== imgEl) {
+  if (e.target.nodeName !== "IMG") {
     return;
   }
+  console.log(e.target);
+  console.log(e.target.nodeName);
+  console.log(e.target.src);
+  console.log(e.target.dataset.source);
+
+  e.target.scr = e.target.dataset.source;
+  console.log(e.target.src);
 
   const instance = basicLightbox.create(`
-    <img src="assets/images/image.png" width="800" height="600">
+    <img src= "${e.target.dataset.source}" >
 `);
   instance.show();
 }
