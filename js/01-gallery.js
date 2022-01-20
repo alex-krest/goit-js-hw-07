@@ -34,16 +34,31 @@ function clickOnCard(e) {
   if (e.target.nodeName !== "IMG") {
     return;
   }
-  console.log(e.target);
-  console.log(e.target.nodeName);
-  console.log(e.target.src);
-  console.log(e.target.dataset.source);
 
-  e.target.scr = e.target.dataset.source;
-  console.log(e.target.src);
-
-  const instance = basicLightbox.create(`
-    <img src= "${e.target.dataset.source}" >
-`);
+  const instance = basicLightbox.create(
+    `
+    <div class='modal'>
+	 <img src= "${e.target.dataset.source}" 
+	 alt=${e.target.alt} 
+	 width='800'
+    heigth='100%'
+	 />
+	 </div>
+`,
+    {
+      onShow: () => {
+        //   instance.element().querySelector("IMG").onclick = instance.close;
+        window.addEventListener("keydown", onEscapeClick);
+      },
+      onClose: () => {
+        window.removeEventListener("keydown", onEscapeClick);
+      },
+    }
+  );
+  function onEscapeClick(e) {
+    if (e.key === "Escape") {
+      instance.close();
+    }
+  }
   instance.show();
 }
