@@ -47,7 +47,7 @@ function clickOnCard(e) {
 `,
     {
       onShow: () => {
-        //   instance.element().querySelector("IMG").onclick = instance.close;
+        instance.element().querySelector("IMG").onclick = instance.close;
         window.addEventListener("keydown", onEscapeClick);
       },
       onClose: () => {
