@@ -41,7 +41,7 @@ function clickOnCard(e) {
 	 <img src= "${e.target.dataset.source}" 
 	 alt=${e.target.alt} 
 	 width='800'
-    heigth='100%'
+    heigth='600'
 	 />
 	 </div>
 `,

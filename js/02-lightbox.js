@@ -24,6 +24,7 @@ generalBoxEl.addEventListener("click", clickOnImg);
 
 let gallery = new SimpleLightbox(".gallery a", {
 	/* options */
+	
 	captionsData:'alt', 
 	captionPosition:'bottom',
 	captionDelay: 250, 
@@ -34,8 +35,9 @@ function clickOnImg(e) {
   if (e.target !== "IMG") {
     return;
   }
-  gallery.on('show.simplelightbox', function () {
-	 return e.target.src=== e.target.parentNode.href;
-});
+  e.target.src=== e.target.parentNode.href
+//   gallery.on('show.simplelightbox', function () {
+// 	 return e.target.src=== e.target.parentNode.href;
+// });
 }
 
